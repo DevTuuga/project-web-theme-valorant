@@ -1,0 +1,116 @@
+body{
+    font-family: 'Poppins', sans-serif;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+main:after{/*cria um pseudolemento no css para não ter que criar no html*, esse elemento de agora é para ser feito uma gradiente no fundo.*/
+    content: '';
+    min-height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3981967787114846) 15%, rgba(0,0,0,0.20211834733893552) 32%, rgba(255,0,0,0) 50%, rgba(0,0,0,0.2049194677871149) 68%, rgba(0,0,0,0.40379901960784315) 85%, rgba(0,0,0,0.7987570028011204) 100%);
+    z-index: -1;
+}
+
+.content{
+    display: flex;
+    flex-direction: column; /*alinha em colunas*/
+    min-height: 100vh; /*ViewPort height (VH)*/
+    justify-content: space-evenly; /*espaçamento uniforme*/
+
+}
+
+.informations .logo{ /*pai (informations) filho (logo)*/
+    max-width: 400px;
+    margin-bottom: 80px;
+    filter: invert(1)
+
+}
+
+
+.informations .description{ /*pai (informations) filho (description)*/
+    width: 50%;
+    font-size: 24px;
+    color: #f5f5f5;
+    line-height: 30px; /*altura da linha*/ 
+}
+
+.buttons-carousel{
+    display: flex;
+    justify-content: center;
+    gap: 20px; /*da um espaçamento de todos os elementos de forma uniforme*/
+}
+
+.buttons-carousel .buttons{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%; /* serve para arredondar algo, radius vem de raio.*/
+    border: 2px solid transparent;
+    cursor: pointer;/*quando passa o mouse em cima o ponteiro vira o ponteiro de clique*/
+    border-color: #ffffff;
+}
+
+.buttons-carousel .buttons.selected{/*estilizar o elemento que tem classes juntas (pai não e filhos sim)*/
+    background-color: red;
+}
+
+.menu-side{
+    position: fixed;/*vai tirar o elemento do fluxo da pagina e botar para cima*/
+    top: 0;
+    right: 0;
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.menu-side ul{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.menu-side .icon{
+    width: 30px;
+    filter: invert(1);
+    transition: 0.3s ease-in-out; 
+} 
+
+.menu-side .icon:hover{ 
+    transform: scale(1.2); 
+}
+
+.carousel{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.carousel .images{
+    width: 100%;
+    height: 100vh;/*se eu deixo só por assim mesmo, as imagens no site iriam ficar todas distorcidas, por isso usamos o object-fit: cover, serve para cobrir todo tamanho da div sem perder qualidade*/
+    object-fit: cover;
+    display: none; /*esconde as imagens*/
+    animation: slideImage 0.7s;
+}
+
+.carousel .images.activ{
+    display: block;
+    
+}
+
+@keyframes slideImage{
+    from{
+        opacity: 0.85;
+    }
+    to{
+        opacity: 1;
+    }
+}
